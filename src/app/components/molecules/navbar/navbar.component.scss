@@ -1,0 +1,183 @@
+@import "../../../../assets/tokens/breakpoints.scss";
+@import "../../../../assets/tokens/colors.scss";
+@import "../../../../assets/tokens/fonts.scss";
+@import "../../../../assets/tokens/margins.scss";
+@import "../../../../assets/tokens/shadows.scss";
+
+.navbar {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+
+  &__content {
+    background-color: $blue-01;
+    display: flex;
+    width: 100%;
+
+    &.productspage {
+      background-color: $black-00;
+    }
+
+    &__logo {
+      &__img {
+        height: auto;
+      }
+    }
+
+    &__custommenu {
+      &__item {
+        display: block;
+        color: $white-00;
+
+        &.dark {
+          color: $blue-01;
+        }
+
+        &:hover {
+          background-color: $blue-01;
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: $breakpoint-480p) {
+  .navbar {
+    height: 6rem;
+    &__content {
+      position: fixed;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 100;
+      opacity: 90%;
+
+      &__home-page {
+        background-color: $blue-01;
+        opacity: 60%;
+        /* Color para la página de inicio */
+      }
+
+      &__logo {
+        display: flex;
+        align-items: center;
+        margin: 0 5%;
+
+        &__img {
+          max-width: 20%;
+        }
+      }
+
+      &__mobilebutton {
+        display: none;
+      }
+
+      &__custommenu {
+        @include code-bold;
+
+        &.navbar__content__menuhidden {
+          display: flex;
+        }
+
+        &__list {
+          display: flex;
+          padding: 1rem;
+          border-radius: 0.375rem;
+          margin: 0 auto;
+          list-style: none;
+          right: 20%;
+
+          &__item {
+            display: flex;
+            padding: 1rem;
+            text-decoration: none;
+            color: $white-00;
+
+            &:hover {
+              color: $blue-00;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: $breakpoint-tablet-portrait) {
+  .navbar {
+    height: 4rem;
+    place-content: center;
+    z-index: 100;
+    background-color: $blue-01;
+
+    &__content {
+      flex-wrap: wrap;
+      height: fit-content;
+      justify-content: space-around;
+      align-items: center;
+
+      &__logo {
+        img {
+          display: flex;
+          margin: auto 0;
+          width: 4rem;
+        }
+      }
+
+      &__mobilebutton {
+        padding: 0rem 0.5rem;
+        margin-left: 0.75rem;
+        font-size: 1.5rem;
+        color: $white-00;
+        background-color: $blue-03;
+        border-radius: 0.5rem;
+        transition: background-color 0.3s, outline 0.3s;
+
+        &:hover {
+          background-color: $blue-00;
+        }
+      }
+
+      &__mobileicon {
+        width: 4rem;
+        height: 0.1rem;
+      }
+
+      &__custommenu {
+        display: none;
+        width: 100%;
+        place-content: center;
+        justify-content: center;
+
+        &.navbar__content__menublock {
+          display: block;
+        }
+
+        &__list {
+          @include fira-code-medium;
+          display: flex;
+          position: absolute;
+          flex-direction: column;
+          gap: 0.1rem;
+          width: 100%;
+          opacity: 85%;
+          background-color: $black-00;
+          list-style: none;
+          margin-top: 0 auto;
+          padding: 1rem;
+
+          &__item {
+            display: block;
+            padding: 0.2rem 1rem;
+            text-decoration: none;
+            color: $white-00;
+            border-bottom: solid $blue-03;
+
+            &:hover {
+              color: $blue-00;
+            }
+          }
+        }
+      }
+    }
+  }
+}

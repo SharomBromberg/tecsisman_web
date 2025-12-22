@@ -1,0 +1,132 @@
+@font-face {
+    font-family: "CODE";
+    src: url("../fonts/code/CODE\ Light.otf") format("truetype");
+    font-weight: 200;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Fira Code";
+    src: url("../fonts/Fira_Code/static/FiraCode-Regular.ttf") format("truetype");
+    font-weight: 200;
+    font-style: normal;
+}
+
+
+//peso o grosor de la letra
+$font-weight-lighter: 100;
+$font-weight-ligth: 200;
+$font-weight-normal: 400;
+$font-weight-bold: 700;
+$font-weight-bolder: 900;
+
+//Fuentes
+$georgia-font: "Georgia";
+$palatino-linotype-font: "Palatino Linotype";
+$trebuchet-ms-font: "Trebuchet MS";
+$code-font: "CODE";
+$fira-code-font: "Fira Code";
+
+
+@mixin font-settings($font-family, $font-weight, $font-size, $letter-spacing) {
+    font-family: $font-family;
+    font-weight: $font-weight;
+    font-size: $font-size;
+    letter-spacing: $letter-spacing;
+}
+
+//code
+
+@mixin code-light {
+    @include font-settings($code-font, $font-weight-light, 0.75rem, normal);
+}
+
+@mixin code-light-1 {
+    @include font-settings($code-font, $font-weight-light, 0.875rem, normal);
+}
+
+@mixin code-light-2 {
+    @include font-settings($code-font, $font-weight-light, 1rem, normal);
+}
+
+@mixin code-normal {
+    @include font-settings($code-font, $font-weight-normal, 1.125rem, normal);
+}
+
+@mixin code-normal-medium {
+    @include font-settings($code-font, $font-weight-normal, 1.5rem, normal);
+}
+
+@mixin code-normal-large {
+    @include font-settings($code-font, $font-weight-normal, 1.5rem, 0.625rem);
+}
+
+@mixin code-semibold {
+    @include font-settings($code-font, $font-weight-semibold, 1.5rem, normal);
+}
+
+@mixin code-bold {
+    @include font-settings($code-font, $font-weight-bolder, 1.125rem, 0.625rem);
+}
+
+@mixin code-bolder {
+    @include font-settings($code-font, $font-weight-bolder, 2.5rem, 0.625rem);
+}
+
+@mixin code-bolder-large {
+    @include font-settings($code-font, $font-weight-bolder, 2.5rem, 2.5rem);
+}
+
+//fira code
+
+@mixin fira-code-small {
+    @include font-settings($fira-code-font, $font-weight-ligth, 0.75rem, normal);
+}
+
+@mixin fira-code-normal {
+    @include font-settings($fira-code-font, $font-weight-ligth, 0.875rem, normal);
+}
+
+@mixin fira-code-medium {
+    @include font-settings($fira-code-font, $font-weight-ligth, 1.125rem, normal);
+}
+
+@mixin fira-code-large {
+    @include font-settings($fira-code-font, $font-weight-ligth, 1.25rem, normal);
+}
+
+@mixin fira-code-semibold {
+    @include font-settings($fira-code-font, $font-weight-normal, 1.5rem, normal);
+}
+
+@mixin fira-code-bold {
+    @include font-settings($fira-code-font, $font-weight-bold, 1.15rem, normal);
+}
+
+@mixin fira-code-bold-medium {
+    @include font-settings($fira-code-font, $font-weight-bold, 1.25rem, normal);
+}
+
+@mixin fira-code-bold-large {
+    @include font-settings($fira-code-font, $font-weight-bold, 1.5rem, normal);
+}
+
+@mixin fira-code-bold-l {
+    @include font-settings($fira-code-font, $font-weight-bold, 2.5rem, normal);
+}
+
+@mixin fira-code-bolder {
+    @include font-settings($fira-code-font, $font-weight-bolder, 1.15rem, normal);
+}
+
+@mixin fira-code-bolder-medium {
+    @include font-settings($fira-code-font, $font-weight-bolder, 1.25rem, normal);
+}
+
+@mixin fira-code-bolder-l {
+    @include font-settings($fira-code-font, $font-weight-bolder, 2.5rem, normal);
+}
+
+@mixin fira-code-bolder-xl {
+    @include font-settings($fira-code-font, $font-weight-bolder, 4rem, 1rem);
+}

@@ -1,0 +1,29 @@
+@import '../../../../assets/tokens/breakpoints.scss';
+@import '../../../../assets/tokens/colors.scss';
+@import '../../../../assets/tokens/fonts.scss';
+@import '../../../../assets/tokens/margins.scss';
+@import '../../../../assets/tokens/shadows.scss';
+
+
+@mixin buttonConfig($display, $items, $content, $cont-size, $width, $height, $text-position, $cursor, $bg-color, $border, $border-radius, $color, $padding ) {
+
+    display: $display;
+    align-items: $items;
+    justify-content: $content;
+    box-sizing: $cont-size;
+    width: $width;
+    height: $height;
+    text-align: $text-position;
+    cursor: $cursor;
+    background-color: $bg-color;
+    border: $border;
+    border-radius: $border-radius;
+    color: $color;
+    padding: $padding;
+
+}
+
+.button-black-00 {
+    @include buttonConfig(flex, center, center, border-box, 100%, 40px, center, pointer, $black-00, none, 20px, $white-00, 16px);
+    @include fira-code-normal;
+}

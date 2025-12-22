@@ -1,0 +1,132 @@
+@import "../../../../assets/tokens/breakpoints.scss";
+@import "../../../../assets/tokens/colors.scss";
+@import "../../../../assets/tokens/fonts.scss";
+@import "../../../../assets/tokens/margins.scss";
+@import "../../../../assets/tokens/shadows.scss";
+
+* {
+  background-color: $blue-01;
+}
+
+@media (min-width: $breakpoint-480p) {
+  footer {
+    height: 16rem;
+    max-width: 100%;
+    padding: 1rem;
+    justify-content: center;
+
+    .container {
+      margin: $margin-small $margin-medium;
+      display: flex;
+      gap: 10rem;
+
+      &__contact {
+        display: flex;
+        flex-direction: column;
+        color: $white-00;
+        align-items: center;
+
+        h2 {
+          @include fira-code-semibold;
+        }
+
+        li {
+          @include fira-code-semibold;
+          list-style: none;
+          padding: 0.5rem;
+
+          img {
+            height: 2rem;
+            margin: 0 $margin-large;
+          }
+
+          a {
+            color: $white-00;
+          }
+        }
+      }
+
+      &__findUs {
+        display: flex;
+        flex-direction: column;
+        color: $white-00;
+        align-items: center;
+
+        h2 {
+          @include fira-code-semibold;
+        }
+
+        p {
+          @include fira-code-semibold;
+          display: flex;
+          list-style: none;
+          margin-top: $margin-large;
+
+          img {
+            height: 2rem;
+            margin: 0 $margin-large;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: $breakpoint-tablet-portrait) {
+  footer {
+    padding: 2rem 0;
+
+    .container {
+      display: flex;
+      width: 100%;
+      flex-direction: column;
+
+      &__contact {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        color: $white-00;
+
+        h2 {
+          @include fira-code-semibold;
+        }
+
+        li {
+          @include fira-code-normal;
+          list-style: none;
+
+          img {
+            height: 1rem;
+          }
+
+          a {
+            color: $white-00;
+            margin: 0 $margin-small;
+          }
+        }
+      }
+
+      &__findUs {
+        display: flex;
+        gap: 1rem;
+        color: $white-00;
+        margin: 0 auto;
+
+        h2 {
+          @include fira-code-semibold;
+        }
+
+        p {
+          @include fira-code-medium;
+
+          align-items: center;
+
+          img {
+            height: 2rem;
+            margin: 0 $margin-large;
+          }
+        }
+      }
+    }
+  }
+}

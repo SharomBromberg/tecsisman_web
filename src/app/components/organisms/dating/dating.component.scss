@@ -1,0 +1,125 @@
+@import '../../../../assets/tokens/breakpoints.scss';
+@import '../../../../assets/tokens/colors.scss';
+@import '../../../../assets/tokens/fonts.scss';
+@import '../../../../assets/tokens/margins.scss';
+@import '../../../../assets/tokens/shadows.scss';
+
+@import '../../../../assets/tokens/breakpoints.scss';
+@import '../../../../assets/tokens/colors.scss';
+@import '../../../../assets/tokens/fonts.scss';
+@import '../../../../assets/tokens/margins.scss';
+@import '../../../../assets/tokens/shadows.scss';
+
+.dating {
+    width: 100%;
+    display: flex;
+
+    &__items {
+        justify-content: center;
+
+        &__container {
+            overflow: hidden;
+
+            &__image {
+                object-fit: cover;
+            }
+
+            &__button {
+                @include fira-code-medium;
+                color: $white-00;
+                background-color: $black-00;
+                border-radius: 1rem;
+                margin-top: 1rem;
+            }
+        }
+    }
+}
+
+
+@media (min-width: $breakpoint-480p) {
+    .dating {
+        flex-direction: column;
+        align-items: center;
+        margin: 4rem 0;
+
+        h2 {
+            @include fira-code-bold-large;
+            margin: 5rem 0;
+        }
+
+        &__items {
+            display: flex;
+            width: 100%;
+            height: 25rem;
+            flex-wrap: wrap;
+            gap: 4rem;
+
+
+            &__container {
+                display: flex;
+                width: 25%;
+                flex-direction: column;
+                text-align: center;
+                place-content: center;
+                align-items: center;
+                gap: 2rem;
+                margin-bottom: 8rem;
+
+                &__image {
+                    width: 25rem;
+                    height: 20rem;
+                }
+
+                &__title {
+                    @include fira-code-bold-medium;
+                    height: 3rem;
+
+                }
+
+
+            }
+        }
+    }
+}
+
+@media (max-width: $breakpoint-tablet-portrait) {
+
+    .dating {
+        flex-direction: column;
+        max-width: 100%;
+        align-items: center;
+
+        h2 {
+            @include fira-code-bold-large;
+            margin: 5rem 0;
+        }
+
+        &__items {
+            display: flex;
+            flex-direction: column;
+            gap: 4rem;
+
+            &__container {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                width: 90%;
+                margin: 0 auto;
+
+
+                &__image {
+                    width: 18rem;
+                    height: 18rem;
+                }
+
+                &__title {
+                    @include fira-code-bold;
+                    text-align: center;
+                    width: 80%;
+                    padding: 2rem 0;
+
+                }
+            }
+        }
+    }
+}

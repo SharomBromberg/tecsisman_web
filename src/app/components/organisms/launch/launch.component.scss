@@ -1,0 +1,109 @@
+@import '../../../../assets/tokens/breakpoints.scss';
+@import '../../../../assets/tokens/colors.scss';
+@import '../../../../assets/tokens/fonts.scss';
+@import '../../../../assets/tokens/margins.scss';
+@import '../../../../assets/tokens/shadows.scss';
+
+.launch {
+
+
+    &__items {
+
+
+        &__container {
+
+            &__title {
+                @include fira-code-bold-medium;
+            }
+
+            &__paragraph {
+                @include fira-code-medium;
+
+            }
+        }
+    }
+}
+
+@media (min-width: $breakpoint-480p) {
+    .launch {
+
+        display: flex;
+        flex-direction: column;
+        max-width: 100%;
+        align-items: center;
+
+        h2 {
+            @include fira-code-bold-large;
+            margin: 5rem 0;
+        }
+
+        &__items {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 4rem;
+            place-content: center;
+
+            &__container {
+                display: flex;
+                width: 25%;
+                flex-direction: column;
+                text-align: center;
+                gap: 2rem;
+
+                &__title {
+                    @include fira-code-bold-medium;
+                }
+
+                &__paragraph {
+                    @include fira-code-medium;
+                    text-align: justify;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: $breakpoint-tablet-portrait) {
+
+    .launch {
+        display: flex;
+        flex-direction: column;
+        max-width: 100%;
+        align-items: center;
+        margin-top: 2rem;
+
+        h2 {
+            @include fira-code-bold;
+        }
+
+        &__items {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 4rem;
+
+            &__container {
+                display: flex;
+                width: 90%;
+                flex-direction: column;
+                text-align: center;
+                gap: 2rem;
+                margin: 0 auto;
+
+                &__image {
+                    width: 100%;
+                }
+
+                &__title {
+                    @include fira-code-bold;
+                }
+
+                &__paragraph {
+                    @include fira-code-normal;
+                    text-align: justify;
+                }
+            }
+        }
+    }
+}
