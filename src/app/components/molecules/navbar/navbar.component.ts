@@ -10,9 +10,11 @@ import { Router, NavigationEnd } from '@angular/router';
 export class NavbarComponent {
 
   menuElements: MenuElement[] = [
-    // { title: 'admin', route: '/Administrador' },
     { title: 'Inicio', route: '/Inicio' },
+    { title: 'Servicios', route: '/Servicios' },
     { title: 'Productos', route: '/Productos' },
+    { title: 'Contacto', route: '/Contacto' },
+    { title: 'Blog', route: '/Blog' },
 
   ];
   isMenuOpen: boolean = false;
@@ -31,18 +33,17 @@ export class NavbarComponent {
   }
   toggleMenu(): void {
     this.isMenuOpen = !this.isMenuOpen;
-    console.log(this.isMenuOpen);
   }
   closeMenu(): void {
 
     this.isMenuOpen = false;
   }
   getPageClass(url: string): string {
-    if (url === '/Inicio') {
-      return 'homepage';
-    } else if (url === '/Productos') {
-      return 'productspage';
-    }
+    if (url === '/Inicio') return 'homepage';
+    if (url === '/Productos') return 'productspage';
+    if (url === '/Servicios') return 'servicespage';
+    if (url === '/Contacto') return 'contactpage';
+    if (url === '/Blog') return 'blogpage';
     // Agrega más condiciones según sea necesario para otras páginas
     return '';
   }

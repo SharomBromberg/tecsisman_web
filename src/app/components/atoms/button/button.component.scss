@@ -4,26 +4,56 @@
 @import '../../../../assets/tokens/margins.scss';
 @import '../../../../assets/tokens/shadows.scss';
 
+// Base atomic button styles
+.app-btn {
+    @include inter-button(1rem);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0.75rem;
+    padding: 0.625rem 1rem;
+    border: 1px solid transparent;
+    text-align: center;
+    cursor: pointer;
+    @include box-shadow($box-shadow);
+    transition: background-color 160ms ease, color 160ms ease, border-color 160ms ease, transform 160ms ease;
 
-@mixin buttonConfig($display, $items, $content, $cont-size, $width, $height, $text-position, $cursor, $bg-color, $border, $border-radius, $color, $padding ) {
+    &--lg { padding: 0.75rem 1.25rem; @include inter-button(1.05rem); }
+    &--sm { padding: 0.5rem 0.75rem; @include inter-button(0.95rem); }
+    &--block { width: 100%; }
 
-    display: $display;
-    align-items: $items;
-    justify-content: $content;
-    box-sizing: $cont-size;
-    width: $width;
-    height: $height;
-    text-align: $text-position;
-    cursor: $cursor;
-    background-color: $bg-color;
-    border: $border;
-    border-radius: $border-radius;
-    color: $color;
-    padding: $padding;
+    &--primary {
+        background-color: $blue-01;
+        color: $white-00;
+        border-color: $blue-01;
+        &:hover { background-color: lighten($blue-01, 6%); }
+        &:active { transform: translateY(1px); }
+        &:disabled { opacity: .6; cursor: not-allowed; }
+    }
 
+    &--outline {
+        background-color: transparent;
+        color: $blue-01;
+        border-color: $blue-01;
+        &:hover { background-color: rgba($blue-01, 0.08); }
+        &:active { transform: translateY(1px); }
+        &:disabled { opacity: .6; cursor: not-allowed; }
+    }
+
+    &--light {
+        background-color: $white-00;
+        color: $blue-01;
+        border-color: $gray-01;
+        &:hover { background-color: $white-01; }
+    }
+
+    &--dark {
+        background-color: $black-00;
+        color: $white-00;
+        border-color: $black-00;
+        &:hover { background-color: lighten($black-00, 6%); }
+    }
 }
 
-.button-black-00 {
-    @include buttonConfig(flex, center, center, border-box, 100%, 40px, center, pointer, $black-00, none, 20px, $white-00, 16px);
-    @include fira-code-normal;
-}
+// Backward compatibility
+.button-black-00 { @include inter-button(1rem); background-color: $black-00; color: $white-00; border-radius: 1.25rem; padding: 0.625rem 1rem; display: inline-flex; align-items: center; justify-content: center; }

@@ -5,36 +5,56 @@
 @import "../../../../assets/tokens/shadows.scss";
 
 .quotate {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-  text-align: center;
+  background: $white-01;
+  padding: 4rem 0;
+
+  h2 {
+    @include poppins-cta(2rem);
+    color: $blue-01;
+    text-align: center;
+    margin: 0 0 2rem 0;
+  }
 
   &__items {
-    display: flex;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
 
     &__container {
+      background: $white-00;
+      border-radius: 0.75rem;
+      padding: 1.25rem;
+      @include box-shadow($box-shadow);
       display: flex;
-      place-content: center;
-      align-items: center;
-      text-align: center;
       flex-direction: column;
+      gap: 0.75rem;
+      height: 100%;
+      text-align: center;
+      align-items: center;
 
       &__image {
-        object-fit: cover;
+        width: 100%;
+        border-radius: 0.5rem;
+        overflow: hidden;
+        height: clamp(9rem, 22vw, 14rem);
+
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          display: block;
+        }
       }
 
       &__title {
-        @include fira-code-bold-medium;
+        @include inter-title(1.125rem);
+        margin: 0.25rem 0 0;
+        color: $blue-01;
+        min-height: 2.5rem;
       }
 
       &__button {
-        @include fira-code-medium;
-        color: $white-00;
-        background-color: $black-00;
-        border-radius: 1rem;
+        @include inter-button(0.95rem);
       }
     }
   }
@@ -42,77 +62,34 @@
 
 @media (min-width: $breakpoint-480p) {
   .quotate {
-    margin: 8rem 0;
-    padding: 5rem;
+    padding: 6rem 2rem;
 
     h2 {
-      @include fira-code-bold-large;
-      margin: 5rem 0;
+      @include poppins-cta(2.25rem);
     }
 
     &__items {
-      width: 100%;
-      flex-wrap: wrap;
-      gap: 3rem;
-      justify-content: center;
+      // Use 6 virtual columns so each card spans 2 to allow centering
+      grid-template-columns: repeat(6, minmax(0, 1fr));
+      gap: 2rem;
 
-      &__container {
-        gap: 2rem;
-        margin-bottom: 8rem;
+      // Each card spans 2 columns
+      &__container { grid-column: span 2; }
 
-        &__image {
-          margin-top: 0;
-
-          img {
-            width: 25rem;
-            height: 16rem;
-            margin: 0 auto;
-          }
-        }
-
-        &__title {
-          height: 2rem;
-        }
-      }
+      // Center the bottom row: leave columns 1 and 6 empty
+      &__container:nth-child(4) { grid-column: 2 / span 2; }
+      &__container:nth-child(5) { grid-column: 4 / span 2; }
     }
   }
 }
 
 @media (max-width: $breakpoint-tablet-portrait) {
   .quotate {
-    margin: 1rem 0;
-    padding: 2%;
-
-    h2 {
-      @include fira-code-bold-large;
-      margin: 5rem 0;
-    }
+    padding: 3rem 0;
 
     &__items {
-      flex-direction: column;
-      width: 100%;
-      gap: 5rem;
-
-      &__container {
-        width: 90%;
-        gap: 2rem;
-        margin-bottom: 8rem;
-        margin: 0 auto;
-
-        &__image {
-          width: 100%;
-
-          img {
-            display: flex;
-            width: 100%;
-            height: 11rem;
-          }
-        }
-
-        &__title {
-          max-width: 80%;
-        }
-      }
+      grid-template-columns: 1fr;
+      gap: 1.25rem;
     }
   }
 }

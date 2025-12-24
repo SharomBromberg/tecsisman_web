@@ -1,132 +1,82 @@
-@font-face {
-    font-family: "CODE";
-    src: url("../fonts/code/CODE\ Light.otf") format("truetype");
-    font-weight: 200;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: "Fira Code";
-    src: url("../fonts/Fira_Code/static/FiraCode-Regular.ttf") format("truetype");
-    font-weight: 200;
-    font-style: normal;
-}
+// Tipografías base (cargadas desde index.html via Google Fonts)
+$inter-font: 'Inter', Arial, sans-serif;
+$poppins-font: 'Poppins', Arial, sans-serif;
 
 
-//peso o grosor de la letra
-$font-weight-lighter: 100;
-$font-weight-ligth: 200;
-$font-weight-normal: 400;
-$font-weight-bold: 700;
+// Pesos (alineado a la guía)
+$font-weight-lighter: 100; // compat
+$font-weight-ligth: 200;  // compat (mantener para no romper includes existentes)
+$font-weight-light: 300;
+$font-weight-regular: 400; // texto general
+$font-weight-400: 400;     // alias
+$font-weight-medium: 500;  // subtítulos
+$font-weight-500: 500;     // alias
+$font-weight-semibold: 600; // botones
+$font-weight-600: 600;      // alias
+$font-weight-bold: 700;     // títulos principales
+$font-weight-700: 700;      // alias
 $font-weight-bolder: 900;
 
-//Fuentes
+// Fuentes (compat + nuevas)
 $georgia-font: "Georgia";
 $palatino-linotype-font: "Palatino Linotype";
 $trebuchet-ms-font: "Trebuchet MS";
-$code-font: "CODE";
-$fira-code-font: "Fira Code";
+// Mapear antiguas a Inter para no romper estilos existentes
+$code-font: $inter-font;
+$fira-code-font: $inter-font;
 
 
 @mixin font-settings($font-family, $font-weight, $font-size, $letter-spacing) {
-    font-family: $font-family;
-    font-weight: $font-weight;
-    font-size: $font-size;
-    letter-spacing: $letter-spacing;
+        font-family: $font-family;
+        font-weight: $font-weight;
+        font-size: $font-size;
+        letter-spacing: $letter-spacing;
 }
 
-//code
-
-@mixin code-light {
-    @include font-settings($code-font, $font-weight-light, 0.75rem, normal);
+// Mixins modernos
+@mixin inter-body($size: 1rem) {
+    @include font-settings($inter-font, $font-weight-regular, $size, normal);
 }
 
-@mixin code-light-1 {
-    @include font-settings($code-font, $font-weight-light, 0.875rem, normal);
+@mixin inter-subtitle($size: 1.125rem) {
+    @include font-settings($inter-font, $font-weight-medium, $size, normal);
 }
 
-@mixin code-light-2 {
-    @include font-settings($code-font, $font-weight-light, 1rem, normal);
+@mixin inter-button($size: 1rem) {
+    @include font-settings($inter-font, $font-weight-semibold, $size, 0.01em);
 }
 
-@mixin code-normal {
-    @include font-settings($code-font, $font-weight-normal, 1.125rem, normal);
+@mixin inter-title($size: 1.5rem) {
+    @include font-settings($inter-font, $font-weight-bold, $size, -0.005em);
 }
 
-@mixin code-normal-medium {
-    @include font-settings($code-font, $font-weight-normal, 1.5rem, normal);
+@mixin poppins-cta($size: 1.75rem) {
+    @include font-settings($poppins-font, $font-weight-bold, $size, -0.01em);
 }
 
-@mixin code-normal-large {
-    @include font-settings($code-font, $font-weight-normal, 1.5rem, 0.625rem);
-}
+// Compatibilidad: redirigir antiguos mixins "code-*" a Inter
+@mixin code-light { @include inter-body(0.75rem); }
+@mixin code-light-1 { @include inter-body(0.875rem); }
+@mixin code-light-2 { @include inter-body(1rem); }
+@mixin code-normal { @include inter-body(1.125rem); }
+@mixin code-normal-medium { @include inter-subtitle(1.5rem); }
+@mixin code-normal-large { @include inter-subtitle(1.5rem); }
+@mixin code-semibold { @include inter-subtitle(1.5rem); }
+@mixin code-bold { @include inter-button(1.125rem); }
+@mixin code-bolder { @include inter-title(2.5rem); }
+@mixin code-bolder-large { @include inter-title(2.5rem); }
 
-@mixin code-semibold {
-    @include font-settings($code-font, $font-weight-semibold, 1.5rem, normal);
-}
-
-@mixin code-bold {
-    @include font-settings($code-font, $font-weight-bolder, 1.125rem, 0.625rem);
-}
-
-@mixin code-bolder {
-    @include font-settings($code-font, $font-weight-bolder, 2.5rem, 0.625rem);
-}
-
-@mixin code-bolder-large {
-    @include font-settings($code-font, $font-weight-bolder, 2.5rem, 2.5rem);
-}
-
-//fira code
-
-@mixin fira-code-small {
-    @include font-settings($fira-code-font, $font-weight-ligth, 0.75rem, normal);
-}
-
-@mixin fira-code-normal {
-    @include font-settings($fira-code-font, $font-weight-ligth, 0.875rem, normal);
-}
-
-@mixin fira-code-medium {
-    @include font-settings($fira-code-font, $font-weight-ligth, 1.125rem, normal);
-}
-
-@mixin fira-code-large {
-    @include font-settings($fira-code-font, $font-weight-ligth, 1.25rem, normal);
-}
-
-@mixin fira-code-semibold {
-    @include font-settings($fira-code-font, $font-weight-normal, 1.5rem, normal);
-}
-
-@mixin fira-code-bold {
-    @include font-settings($fira-code-font, $font-weight-bold, 1.15rem, normal);
-}
-
-@mixin fira-code-bold-medium {
-    @include font-settings($fira-code-font, $font-weight-bold, 1.25rem, normal);
-}
-
-@mixin fira-code-bold-large {
-    @include font-settings($fira-code-font, $font-weight-bold, 1.5rem, normal);
-}
-
-@mixin fira-code-bold-l {
-    @include font-settings($fira-code-font, $font-weight-bold, 2.5rem, normal);
-}
-
-@mixin fira-code-bolder {
-    @include font-settings($fira-code-font, $font-weight-bolder, 1.15rem, normal);
-}
-
-@mixin fira-code-bolder-medium {
-    @include font-settings($fira-code-font, $font-weight-bolder, 1.25rem, normal);
-}
-
-@mixin fira-code-bolder-l {
-    @include font-settings($fira-code-font, $font-weight-bolder, 2.5rem, normal);
-}
-
-@mixin fira-code-bolder-xl {
-    @include font-settings($fira-code-font, $font-weight-bolder, 4rem, 1rem);
-}
+// Compatibilidad: redirigir "fira-code-*" a Inter según pesos nuevos
+@mixin fira-code-small { @include inter-body(0.75rem); }
+@mixin fira-code-normal { @include inter-body(0.875rem); }
+@mixin fira-code-medium { @include inter-body(1.125rem); }
+@mixin fira-code-large { @include inter-body(1.25rem); }
+@mixin fira-code-semibold { @include inter-subtitle(1.5rem); }
+@mixin fira-code-bold { @include inter-button(1.15rem); }
+@mixin fira-code-bold-medium { @include inter-button(1.25rem); }
+@mixin fira-code-bold-large { @include inter-button(1.5rem); }
+@mixin fira-code-bold-l { @include inter-title(2.5rem); }
+@mixin fira-code-bolder { @include inter-title(1.15rem); }
+@mixin fira-code-bolder-medium { @include inter-title(1.25rem); }
+@mixin fira-code-bolder-l { @include inter-title(2.5rem); }
+@mixin fira-code-bolder-xl { @include inter-title(4rem); }

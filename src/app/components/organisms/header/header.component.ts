@@ -1,10 +1,3 @@
-import { Component } from '@angular/core';
-
-@Component({
-  selector: 'app-header',
-  templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss']
-})
-export class HeaderComponent {
-
-}
+// Deprecated: HeaderComponent has been replaced by HeroComponent.
+// This file is intentionally left minimal to avoid compilation/declaration conflicts.
+export {}

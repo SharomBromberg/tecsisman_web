@@ -1,8 +1,14 @@
-<div class="header">
-    <img class="header__background" src="../../../../assets/pictures/headerBackground.png"
-        alt=" Fondo del encabezado de TECSISMAN ">
-    <div class="header__textcontainer">
-        <h1 class="header__textcontainer__title">TECSISMAN </h1>
-        <h2 class="header__textcontainer__subtitle">Tecnología a tu alcance, <br>soluciones a tu medida </h2>
+<section class="hero" aria-label="Hero principal">
+    <div class="hero__bg" aria-hidden="true">
+        <img src="../../../../assets/pictures/headerBackground.png" alt="" />
+        <div class="hero__overlay"></div>
     </div>
-</div>
+    <div class="hero__content app-container">
+        <h1 class="hero__title cta-title">Tecnología a tu alcance</h1>
+        <p class="hero__subtitle subtitle">Soluciones a tu medida para impulsar tu negocio.</p>
+        <div class="hero__actions">
+            <a routerLink="/Servicios" class="btn btn-primary">Ver servicios</a>
+            <a routerLink="/Contacto" class="btn btn-outline-light">Solicita tu cotización</a>
+        </div>
+    </div>
+</section>

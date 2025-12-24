@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HeaderComponent } from './header/header.component';
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 import { RouterModule } from '@angular/router';
 import { AtomsModule } from '../atoms/atoms.module';
@@ -9,11 +8,12 @@ import { FormsModule } from '@angular/forms';
 import { MoleculesModule } from '../molecules/molecules.module';
 import { DatingComponent } from './dating/dating.component';
 import { QuotateComponent } from './quotate/quotate.component';
+import { HeroComponent } from './hero/hero.component';
 
 
 
 @NgModule({
-  declarations: [HeaderComponent, ShoppingCartComponent, LaunchComponent, DatingComponent, QuotateComponent],
+  declarations: [HeroComponent, ShoppingCartComponent, LaunchComponent, DatingComponent, QuotateComponent],
   imports: [
     CommonModule,
     RouterModule,
@@ -22,6 +22,6 @@ import { QuotateComponent } from './quotate/quotate.component';
     MoleculesModule
 
   ],
-  exports: [HeaderComponent, ShoppingCartComponent, LaunchComponent, DatingComponent, QuotateComponent]
+  exports: [HeroComponent, ShoppingCartComponent, LaunchComponent, DatingComponent, QuotateComponent]
 })
 export class OrganismsModule { }

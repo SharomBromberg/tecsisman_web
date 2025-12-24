@@ -4,116 +4,68 @@
 @import '../../../../assets/tokens/margins.scss';
 @import '../../../../assets/tokens/shadows.scss';
 
-.header {
-    display: flex;
+.hero {
+    position: relative;
+    padding-top: 6rem; // evita solaparse con la navbar fija
+    background: $blue-01;
+    color: $white-00;
+    overflow: hidden;
 
-    background-color: $blue-01;
-
-
-    &__background {
-
-        object-fit: cover;
+    &__bg {
+        position: absolute;
+        inset: 0;
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
     }
 
+    &__overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(180deg, rgba(4,49,76,0.6) 0%, rgba(4,49,76,0.9) 100%);
+    }
+
+    &__content {
+        position: relative;
+        z-index: 1;
+        padding: 4rem 0 3rem;
+    }
+
+    &__title {
+        @include poppins-cta(2.25rem);
+        margin: 0 0 0.5rem 0;
+    }
+
+    &__subtitle {
+        @include inter-subtitle(1.125rem);
+        margin: 0 0 1rem 0;
+        color: $white-01;
+    }
+
+    &__actions {
+        display: flex;
+        gap: 0.75rem;
+        flex-wrap: wrap;
+    }
 }
 
 @media (min-width: $breakpoint-480p) {
-    .header {
-        display: flex;
-        flex-direction: column;
-        right: 0;
-        left: 0;
-        margin-top: -6rem;
-        position: relative;
-        width: 100%;
-        background-color: $blue-01;
-
-        &__background {
-
-            height: 45rem;
-            object-fit: cover;
+    .hero {
+        &__content {
+            padding: 6rem 0 5rem;
         }
-
-        &__textcontainer {
-            display: flex;
-            flex-direction: column;
-            color: $white-00;
-            position: absolute;
-            /* Posiciona de forma absoluta con respecto al contenedor padre */
-            top: 80%;
-            /* Alinea verticalmente al centro */
-            left: 52%;
-            /* Alinea horizontalmente al centro */
-            transform: translate(-50%, -50%);
-            /* Centra el título */
-            z-index: 1;
-            width: 100%;
-
-            &__title {
-
-                @include fira-code-bolder-xl;
-
-            }
-
-            &__subtitle {
-                @include fira-code-bold-l;
-                color: $blue-00;
-
-            }
-        }
-
-
-
+        &__title { @include poppins-cta(3rem); }
+        &__subtitle { @include inter-subtitle(1.25rem); }
     }
 }
 
-
-
 @media (max-width: $breakpoint-tablet-portrait) {
-    .header {
-        display: flex;
-        flex-direction: column;
-        right: 0;
-        left: 0;
-        margin-top: -6rem;
-        position: relative;
-        width: 100%;
-        background-color: $blue-01;
-        max-width: 100%;
-
-        &__background {
-            max-width: 100%;
-            height: 25rem;
-            object-fit: cover;
-        }
-
-        &__textcontainer {
-
-            position: absolute;
-            /* Posiciona de forma absoluta con respecto al contenedor padre */
-            top: 66%;
-            /* Alinea verticalmente al centro */
-            left: 55%;
-            /* Alinea horizontalmente al centro */
-            transform: translate(-50%, -50%);
-            /* Centra el título */
-            z-index: 1;
-            width: 100%;
-
-            &__title {
-                @include fira-code-bold;
-                color: $white-00;
-
-            }
-
-            &__subtitle {
-                @include fira-code-medium;
-                color: $blue-00;
-                position: absolute;
-
-
-            }
-        }
-
+    .hero {
+        &__content { padding: 3rem 0 2rem; }
+        &__title { @include poppins-cta(1.75rem); }
+        &__subtitle { @include inter-subtitle(1rem); }
     }
 }

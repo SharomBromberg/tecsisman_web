@@ -1,20 +1,18 @@
-<nav class="navbar">
+<nav class="navbar" role="navigation" aria-label="Principal">
     <div class="navbar__content" [ngClass]="currentPageClass">
-        <a href="" class=" navbar__content__logo">
-            <img src="assets/pictures/Tecsisman.png" class="navbar__content__logo__img" alt="Tecsisman" />
+        <a class="navbar__content__logo" [routerLink]="'/Inicio'" aria-label="Inicio">
+            <img src="assets/pictures/Tecsisman.png" class="navbar__content__logo__img" alt="Tecsisman" width="120" height="40" loading="eager" />
         </a>
 
-        <!-- Barra móvil -->
-        <button (click)="toggleMenu()" type="button" class="navbar__content__mobilebutton">
-            <span class="navbar__content__mobileicon"> &#9776;</span>
+        <button (click)="toggleMenu()" type="button" class="navbar__content__mobilebutton" aria-controls="navbar-default" [attr.aria-expanded]="isMenuOpen" aria-label="Abrir menú">
+            <span class="navbar__content__mobileicon">&#9776;</span>
         </button>
 
         <div [ngClass]="{'navbar__content__menuhidden': !isMenuOpen, 'navbar__content__menublock': isMenuOpen}"
-            class="navbar__content__custommenu" id="navbar-default">
+                 class="navbar__content__custommenu" id="navbar-default">
             <ul class="navbar__content__custommenu__list">
                 <li *ngFor="let element of menuElements">
-                    <a class="navbar__content__custommenu__list__item" [routerLink]="element.route"
-                        (click)="closeMenu()">{{element.title}}</a>
+                    <a class="navbar__content__custommenu__list__item" [routerLink]="element.route" routerLinkActive="active" (click)="closeMenu()">{{element.title}}</a>
                 </li>
             </ul>
         </div>
