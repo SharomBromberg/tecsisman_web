@@ -1,23 +1,29 @@
+@use '../../../../assets/tokens/colors.scss' as *;
+
 .blog-hero {
-	background: linear-gradient(135deg, var(--color-primary-dark), var(--color-primary));
-	color: #fff;
+	background: linear-gradient(135deg, var(--color-primary-strong), var(--color-primary));
+	color: $white-00;
 	padding: 3rem 0 2rem;
 }
 
 .blog-grid {
 	display: grid;
-	grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+	grid-template-columns: repeat(auto-fill, minmax(16.25rem, 1fr));
 	gap: 1rem;
 }
 
 .post-card {
-	background: #fff;
-	border: 1px solid rgba(0,0,0,0.08);
+	background: var(--color-surface);
+	border: 1px solid rgba($black-00, 0.08);
 	border-radius: 0.75rem;
 	padding: 1rem;
-	box-shadow: 0 4px 14px rgba(0,0,0,0.06);
+	box-shadow: 0 0.25rem 0.875rem rgba($black-00, 0.06);
 
-	img { width: 100%; height: 140px; object-fit: cover; border-radius: 0.5rem; margin-bottom: 0.5rem; }
+	img { width: 100%; height: 8.75rem; object-fit: cover; border-radius: 0.5rem; margin-bottom: 0.5rem; }
 	h3 { margin: 0.5rem 0; }
 	p { margin: 0 0 0.5rem; }
+
+	.app-action {
+		justify-self: start;
+	}
 }

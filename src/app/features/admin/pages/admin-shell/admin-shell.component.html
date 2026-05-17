@@ -1,0 +1,14 @@
+<section class="admin-shell app-container" aria-label="Panel de administracion">
+  <aside class="admin-shell__sidebar app-card">
+    <p class="admin-shell__eyebrow">Admin</p>
+    <h1>Gestion de catalogo</h1>
+    <nav class="admin-shell__nav" aria-label="Secciones de administracion">
+      <a routerLink="/admin/categorias" routerLinkActive="is-active">Categorias</a>
+      <a routerLink="/admin/productos" routerLinkActive="is-active">Nuevo producto</a>
+    </nav>
+  </aside>
+
+  <div class="admin-shell__content">
+    <router-outlet></router-outlet>
+  </div>
+</section>

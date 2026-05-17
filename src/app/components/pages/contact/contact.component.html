@@ -3,35 +3,43 @@
   <p class="muted">Cuéntanos sobre tu proyecto o solicita soporte.</p>
 
   <form [formGroup]="form" (ngSubmit)="onSubmit()" novalidate class="contact__form">
-    <div class="form-group">
-      <label for="name">Nombre</label>
-      <input id="name" type="text" class="form-control" formControlName="name" [class.is-invalid]="submitted && f.name.invalid" />
-      <div class="invalid-feedback" *ngIf="submitted && f.name.errors">
-        Ingresa un nombre válido (min. 2 caracteres).
-      </div>
+    <div class="app-field">
+      <label class="app-label" for="name">Nombre</label>
+      <input id="name" type="text" class="app-input" formControlName="name" [class.app-input--invalid]="submitted && f.name.invalid" />
+      @if (submitted && f.name.errors) {
+        <div class="app-feedback">
+          Ingresa un nombre válido (min. 2 caracteres).
+        </div>
+      }
     </div>
 
-    <div class="form-group">
-      <label for="email">Email</label>
-      <input id="email" type="email" class="form-control" formControlName="email" [class.is-invalid]="submitted && f.email.invalid" />
-      <div class="invalid-feedback" *ngIf="submitted && f.email.errors">
-        Ingresa un email válido.
-      </div>
+    <div class="app-field">
+      <label class="app-label" for="email">Email</label>
+      <input id="email" type="email" class="app-input" formControlName="email" [class.app-input--invalid]="submitted && f.email.invalid" />
+      @if (submitted && f.email.errors) {
+        <div class="app-feedback">
+          Ingresa un email válido.
+        </div>
+      }
     </div>
 
-    <div class="form-group">
-      <label for="message">Mensaje</label>
-      <textarea id="message" rows="5" class="form-control" formControlName="message" [class.is-invalid]="submitted && f.message.invalid"></textarea>
-      <div class="invalid-feedback" *ngIf="submitted && f.message.errors">
-        Describe tu necesidad (min. 10 caracteres).
-      </div>
+    <div class="app-field">
+      <label class="app-label" for="message">Mensaje</label>
+      <textarea id="message" rows="5" class="app-textarea" formControlName="message" [class.app-textarea--invalid]="submitted && f.message.invalid"></textarea>
+      @if (submitted && f.message.errors) {
+        <div class="app-feedback">
+          Describe tu necesidad (min. 10 caracteres).
+        </div>
+      }
     </div>
 
     <div class="contact__actions">
-      <button class="btn btn-primary" type="submit" [disabled]="submitting">
+      <button class="app-action app-action--primary" type="submit" [disabled]="submitting">
         {{ submitting ? 'Enviando…' : 'Enviar mensaje' }}
       </button>
-      <span class="text-danger" *ngIf="errorMsg">{{ errorMsg }}</span>
+      @if (errorMsg) {
+        <span class="app-feedback">{{ errorMsg }}</span>
+      }
     </div>
   </form>
 </section>

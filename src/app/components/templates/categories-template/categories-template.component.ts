@@ -1,49 +1,85 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject, DestroyRef } from '@angular/core';
+import { BehaviorSubject, shareReplay, switchMap } from 'rxjs';
 import { Category } from 'src/app/interfaces/categories';
 import { CategoriesService } from 'src/app/services/categories.service';
+import { AsyncPipe } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Component({
-  selector: 'app-categories-template',
-  templateUrl: './categories-template.component.html',
-  styleUrls: ['./categories-template.component.scss']
+    selector: 'app-categories-template',
+    templateUrl: './categories-template.component.html',
+    styleUrls: ['./categories-template.component.scss'],
+    imports: [FormsModule, AsyncPipe]
 })
 export class CategoriesTemplateComponent implements OnInit {
 
-  categories: Category[] = [];
-  newCategory: Category = { name: '' };
-  constructor(private categoriesService: CategoriesService) { }
+  private readonly refreshSubject = new BehaviorSubject<void>(undefined);
+  private readonly categoriesService = inject(CategoriesService);
+  private readonly destroyRef = inject(DestroyRef);
+
+  readonly categories$ = this.refreshSubject.pipe(
+    switchMap(() => this.categoriesService.getAllCategories()),
+    shareReplay({ bufferSize: 1, refCount: true }),
+  );
+  newCategory = { name: '' };
 
   ngOnInit(): void {
-    this.loadCategories();
+    this.refreshCategories();
   }
 
-  loadCategories(): void {
-    this.categoriesService.getAllCategories().subscribe(categories => {
-      this.categories = categories;
-    });
+  private refreshCategories(): void {
+    this.refreshSubject.next();
   }
 
-  createCategory(newCategory: Category): void {
-    this.categoriesService.createCategory(newCategory).subscribe(createdCategory => {
-      this.categories.push(createdCategory);
-      newCategory.name = '';
-    });
-  }
-  updateCategory(updatedCategory: Category): void {
-    if (updatedCategory._id) { // Verificar si _id no es undefined
-      this.categoriesService.updateCategory(updatedCategory._id, updatedCategory).subscribe(() => {
-        const index = this.categories.findIndex(c => c._id === updatedCategory._id);
-        if (index !== -1) {
-          this.categories[index] = updatedCategory;
+  createCategory(newCategory: { name: string }): void {
+    this.categoriesService.createCategory(newCategory as Category)
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe({
+        next: (createdCategory) => {
+          this.newCategory = { name: '' };
+          this.refreshCategories();
+        },
+        error: (err) => {
+          console.error('Failed to create category:', err);
+        },
+        complete: () => {
+          // Lógica opcional a ejecutar cuando el flujo finaliza correctamente
         }
       });
+  }
+  updateCategory(updatedCategory: Category): void {
+    if (updatedCategory.id) {
+      this.categoriesService.updateCategory(updatedCategory.id, updatedCategory)
+        .pipe(takeUntilDestroyed(this.destroyRef))
+        .subscribe({
+          next: () => {
+            this.refreshCategories();
+          },
+          error: (err) => {
+            console.error('Failed to update category:', err);
+          },
+          complete: () => {
+            // Lógica opcional a ejecutar cuando el flujo finaliza correctamente
+          }
+        });
     } else {
-      console.error('Error: _id is undefined');
+      console.error('Error: id is undefined');
     }
   }
   deleteCategory(id: string): void {
-    this.categoriesService.deleteCategory(id).subscribe(() => {
-      this.categories = this.categories.filter(c => c._id !== id);
-    });
+    this.categoriesService.deleteCategory(id)
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe({
+        next: () => {
+          this.refreshCategories();
+        },
+        error: (err) => {
+          console.error('Failed to delete category:', err);
+        },
+        complete: () => {
+          // Lógica opcional a ejecutar cuando el flujo finaliza correctamente
+        }
+      });
   }
 }

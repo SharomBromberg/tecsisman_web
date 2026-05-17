@@ -1,13 +1,17 @@
 <div class="categories">
     <h2>Categorías</h2>
     <ul class="categories__container">
-        <li class="categories__container__list" *ngFor="let category of categories">
-            <div class="categories__container__list__names"> {{ category.name }}</div>
-            <div class="categories__container__list__buttons">
-                <button (click)="updateCategory(category)">Actualizar</button>
-                <button *ngIf="category._id" (click)="deleteCategory(category._id)">Borrar</button>
-            </div>
-        </li>
+        @for (category of categories$ | async; track category.id) {
+            <li class="categories__container__list">
+                <div class="categories__container__list__names"> {{ category.name }}</div>
+                <div class="categories__container__list__buttons">
+                    <button type="button" (click)="updateCategory(category)">Actualizar</button>
+                    @if (category.id) {
+                        <button type="button" (click)="deleteCategory(category.id)">Borrar</button>
+                    }
+                </div>
+            </li>
+        }
     </ul>
 
     <div class="categories__create">

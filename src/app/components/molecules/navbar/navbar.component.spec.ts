@@ -8,9 +8,8 @@ describe('NavbarComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [RouterTestingModule],
-      declarations: [NavbarComponent]
-    }).compileComponents();
+    imports: [RouterTestingModule, NavbarComponent]
+}).compileComponents();
 
     fixture = TestBed.createComponent(NavbarComponent);
     component = fixture.componentInstance;

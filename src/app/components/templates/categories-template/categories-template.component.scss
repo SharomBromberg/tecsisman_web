@@ -1,8 +1,8 @@
-@import '../../../../assets/tokens/breakpoints.scss';
-@import '../../../../assets/tokens/colors.scss';
-@import '../../../../assets/tokens/fonts.scss';
-@import '../../../../assets/tokens/margins.scss';
-@import '../../../../assets/tokens/shadows.scss';
+@use '../../../../assets/tokens/breakpoints.scss' as *;
+@use '../../../../assets/tokens/colors.scss' as *;
+@use '../../../../assets/tokens/fonts.scss' as *;
+@use '../../../../assets/tokens/margins.scss' as *;
+@use '../../../../assets/tokens/shadows.scss' as *;
 
 
 * {

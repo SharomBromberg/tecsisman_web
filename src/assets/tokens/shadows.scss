@@ -1,4 +1,4 @@
-@import '../tokens/colors.scss';
+@use './colors.scss' as *;
 
 $shadow-gray-xxs: 0 4px 5px rgba($gray-01, 0.14);
 $shadow-gray-xs: 0 1px rgba($gray-01, 0.12);

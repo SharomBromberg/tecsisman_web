@@ -1,0 +1,46 @@
+<section class="admin-panel app-card" aria-labelledby="categories-title">
+  <header class="admin-panel__header">
+    <div>
+      <p class="admin-panel__eyebrow">Vista 1</p>
+      <h2 id="categories-title">Gestion de categorias</h2>
+    </div>
+  </header>
+
+  <form class="admin-panel__form" [formGroup]="categoryForm" (ngSubmit)="addCategory()" novalidate>
+    <label class="app-field">
+      <span class="app-label">Nueva categoria</span>
+      <input class="app-input" type="text" formControlName="name" aria-describedby="category-help">
+    </label>
+    @if (categoryForm.controls.name.touched && categoryForm.controls.name.invalid) {
+      <p id="category-help" class="app-feedback">
+        Ingresa un nombre valido de al menos 3 caracteres.
+      </p>
+    }
+    <button class="app-action app-action--primary" type="submit">Crear categoria</button>
+  </form>
+
+  <div class="admin-table-wrap">
+    <table class="app-table" aria-label="Tabla de categorias">
+      <thead>
+        <tr>
+          <th>Categoria</th>
+          <th>Productos</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (row of rows$ | async; track row.id) {
+          <tr>
+            <td>{{ row.name }}</td>
+            <td>{{ row.productCount }}</td>
+            <td>
+              <button class="app-action app-action--outline app-action--compact" type="button" (click)="deleteCategory(row.id)" [disabled]="(rows$ | async)?.length === 1">
+                Eliminar
+              </button>
+            </td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+</section>

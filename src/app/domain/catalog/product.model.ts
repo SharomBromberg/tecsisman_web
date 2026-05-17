@@ -1,0 +1,1 @@
+export { Product } from '../../core/domain/catalog/product.model';

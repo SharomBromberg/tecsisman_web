@@ -1,4 +1,1 @@
-export interface Category {
-    _id?: string;
-    name: string;
-}
+export { Category } from '../domain/catalog/category.model';

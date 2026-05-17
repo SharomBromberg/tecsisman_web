@@ -1,0 +1,62 @@
+<section class="admin-panel app-card" aria-labelledby="product-form-title">
+  <header class="admin-panel__header">
+    <div>
+      <p class="admin-panel__eyebrow">Vista 2</p>
+      <h2 id="product-form-title">Nuevo producto</h2>
+    </div>
+  </header>
+
+  <form class="admin-panel__form admin-panel__form--wide" [formGroup]="productForm" (ngSubmit)="addProduct()" novalidate>
+    <label class="app-field">
+      <span class="app-label">Nombre</span>
+      <input class="app-input" type="text" formControlName="name">
+    </label>
+
+    <label class="app-field">
+      <span class="app-label">Categoria</span>
+      <select class="app-select" formControlName="categoryId">
+        <option value="">Selecciona una categoria</option>
+        @for (category of categories$ | async; track category.id) {
+          <option [value]="category.id">{{ category.name }}</option>
+        }
+      </select>
+    </label>
+
+    <label class="app-field admin-panel__full">
+      <span class="app-label">Descripcion</span>
+      <textarea class="app-textarea" rows="4" formControlName="description"></textarea>
+    </label>
+
+    <label class="app-field admin-panel__full">
+      <span class="app-label">Descripcion tecnica</span>
+      <textarea class="app-textarea" rows="4" formControlName="technicalDescription"></textarea>
+    </label>
+
+    <label class="app-field">
+      <span class="app-label">Precio</span>
+      <input class="app-input" type="number" min="1" formControlName="price">
+    </label>
+
+    <label class="app-field">
+      <span class="app-label">Stock</span>
+      <input class="app-input" type="number" min="0" formControlName="stock">
+    </label>
+
+    <label class="app-field">
+      <span class="app-label">Rating</span>
+      <input class="app-input" type="number" step="0.1" min="0" max="5" formControlName="rating">
+    </label>
+
+    <label class="app-field admin-panel__full">
+      <span class="app-label">URLs de imagenes</span>
+      <textarea class="app-textarea" rows="3" formControlName="images" placeholder="assets/pictures/products/imagen-1.jpg, assets/pictures/products/imagen-2.jpg"></textarea>
+    </label>
+
+    <label class="admin-panel__switch">
+      <input type="checkbox" formControlName="featured">
+      <span>Marcar como destacado</span>
+    </label>
+
+    <button class="app-action app-action--primary admin-panel__submit" type="submit">Guardar producto</button>
+  </form>
+</section>

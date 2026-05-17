@@ -1,61 +1,68 @@
-@import '../../../../assets/tokens/breakpoints.scss';
-@import '../../../../assets/tokens/colors.scss';
-@import '../../../../assets/tokens/fonts.scss';
-@import '../../../../assets/tokens/margins.scss';
-@import '../../../../assets/tokens/shadows.scss';
+@use '../../../../assets/tokens/fonts.scss' as *;
 
-* {
+.development {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
     h1 {
         @include code-bolder;
         margin: 4rem 0;
         text-align: center;
-        font-weight: 700
+        font-weight: 700;
     }
 
     h2 {
         @include code-normal-large;
         margin: 1rem auto;
+        text-align: center;
     }
 
     p {
         @include fira-code-semibold;
+        text-align: center;
     }
 }
 
-
-.development {
+.development__container {
     display: flex;
     flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
 
+.development__container__item {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin: $margin-medium 0;
+    width: 100%;
 
-    &__container {
+    @media (min-width: $breakpoint-tablet-portrait) {
+        gap: 4rem;
+    }
+}
 
+.development__container__item__box {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    align-items: center;
 
-        place-content: center;
-        align-items: center;
+    @media (min-width: $breakpoint-tablet-portrait) {
+        flex-direction: row;
+        gap: 5rem;
+    }
 
+    p {
+        text-align: left;
+        flex: 1;
+    }
 
-
-        &__item {
-            display: flex;
-            flex-direction: column;
-            gap: 4rem;
-            margin: 2rem 0;
-
-
-
-            &__box {
-                display: flex;
-                gap: 10rem;
-
-
-                img {
-                    width: 30%;
-                    margin: 0 auto;
-                }
-            }
-
-
-        }
+    img {
+        width: 100%;
+        max-width: 20rem;
+        height: auto;
+        border-radius: 0.5rem;
     }
 }

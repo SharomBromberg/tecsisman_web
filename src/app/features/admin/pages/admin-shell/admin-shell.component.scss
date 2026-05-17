@@ -1,0 +1,57 @@
+@use '../../../../../assets/tokens/breakpoints.scss' as *;
+@use '../../../../../assets/tokens/colors.scss' as *;
+@use '../../../../../assets/tokens/fonts.scss' as *;
+
+.admin-shell {
+  display: grid;
+  grid-template-columns: minmax(16rem, 18rem) minmax(0, 1fr);
+  gap: 1.5rem;
+  padding: 2rem 0 3rem;
+}
+
+.admin-shell__sidebar {
+  padding: 1.25rem;
+  background: linear-gradient(180deg, rgba($blue-01, 0.98), rgba($black-00, 0.98));
+  color: $white-00;
+  display: grid;
+  gap: 1rem;
+  align-content: start;
+}
+
+.admin-shell__eyebrow {
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: rgba($white-00, 0.6);
+  font-size: 0.78rem;
+}
+
+.admin-shell__sidebar h1 {
+  margin: 0;
+  font-family: $poppins-font;
+}
+
+.admin-shell__nav {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.admin-shell__nav a {
+  color: $white-00;
+  text-decoration: none;
+  padding: 0.85rem 1rem;
+  border-radius: 0.85rem;
+  background: rgba($white-00, 0.05);
+  border: 1px solid rgba($white-00, 0.08);
+}
+
+.admin-shell__nav a.is-active {
+  background: rgba($green-02, 0.16);
+  border-color: rgba($green-02, 0.35);
+}
+
+@media (max-width: $breakpoint-tablet-portrait) {
+  .admin-shell {
+    grid-template-columns: 1fr;
+  }
+}
