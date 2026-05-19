@@ -1,60 +1,234 @@
-@use '../../../../assets/tokens/breakpoints.scss' as *;
 @use '../../../../assets/tokens/colors.scss' as *;
 @use '../../../../assets/tokens/fonts.scss' as *;
-@use '../../../../assets/tokens/margins.scss' as *;
+@use '../../../../assets/tokens/spacing.scss' as *;
 @use '../../../../assets/tokens/shadows.scss' as *;
 @use 'sass:color';
 
 // Base atomic button styles
 .app-btn {
-    @include inter-button(1rem);
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 0.75rem;
-    padding: 0.625rem 1rem;
-    border: 1px solid transparent;
-    text-align: center;
-    cursor: pointer;
-    @include box-shadow($box-shadow);
-    transition: background-color 160ms ease, color 160ms ease, border-color 160ms ease, transform 160ms ease;
+  @include inter-button(1rem);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: $spacing-sm;
+  border-radius: $radius-md;
+  padding: $spacing-sm $spacing-md;
+  border: 0.0625rem solid transparent;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  font-weight: $font-weight-semibold;
+  user-select: none;
+  position: relative;
 
-    &--lg { padding: 0.75rem 1.25rem; @include inter-button(1.05rem); }
-    &--sm { padding: 0.5rem 0.75rem; @include inter-button(0.95rem); }
-    &--block { width: 100%; }
+  // Size variants
+  &--xs {
+    padding: 0.375rem $spacing-sm;
+    font-size: 0.8rem;
+  }
 
-    &--primary {
-        background-color: $blue-01;
-        color: $white-00;
-        border-color: $blue-01;
-        &:hover { background-color: color.adjust($blue-01, $lightness: 6%); }
-        &:active { transform: translateY(0.0625rem); }
-        &:disabled { opacity: .6; cursor: not-allowed; }
+  &--sm {
+    padding: $spacing-sm $spacing-md;
+    font-size: 0.9rem;
+  }
+
+  &--lg {
+    padding: $spacing-md $spacing-lg;
+    font-size: 1.05rem;
+  }
+
+  &--xl {
+    padding: $spacing-lg $spacing-xl;
+    font-size: 1.1rem;
+  }
+
+  // Layout modifiers
+  &--block {
+    width: 100%;
+  }
+
+  &--icon {
+    padding: $spacing-sm;
+    border-radius: 50%;
+  }
+
+  &--loading {
+    pointer-events: none;
+    opacity: 0.7;
+
+    &::after {
+      content: '';
+      position: absolute;
+      width: 1rem;
+      height: 1rem;
+      border: 2px solid currentColor;
+      border-top-color: transparent;
+      border-radius: 50%;
+      animation: spin 0.6s linear infinite;
+    }
+  }
+
+  // Color Variants
+  &--primary {
+    background: linear-gradient(135deg, $blue-00 0%, $blue-02 100%);
+    color: $white-00;
+    border-color: $blue-00;
+    box-shadow: 0 0.25rem 0.75rem rgba($blue-00, 0.2);
+
+    &:hover:not(:disabled) {
+      transform: translateY(-0.25rem);
+      box-shadow: 0 0.5rem 1.5rem rgba($blue-00, 0.3);
     }
 
-    &--outline {
-        background-color: transparent;
-        color: $blue-01;
-        border-color: $blue-01;
-        &:hover { background-color: rgba($blue-01, 0.08); }
-        &:active { transform: translateY(0.0625rem); }
-        &:disabled { opacity: .6; cursor: not-allowed; }
+    &:active:not(:disabled) {
+      transform: scale(0.98);
     }
 
-    &--light {
-        background-color: $white-00;
-        color: $blue-01;
-        border-color: $gray-01;
-        &:hover { background-color: $white-01; }
+    &:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+  }
+
+  &--secondary {
+    background: transparent;
+    color: $blue-00;
+    border-color: $blue-00;
+
+    &:hover:not(:disabled) {
+      background: rgba($blue-00, 0.1);
+      border-color: $blue-00;
     }
 
-    &--dark {
-        background-color: $black-00;
-        color: $white-00;
-        border-color: $black-00;
-        &:hover { background-color: color.adjust($black-00, $lightness: 6%); }
+    &:active:not(:disabled) {
+      transform: scale(0.98);
     }
+
+    &:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+  }
+
+  &--success {
+    background: linear-gradient(135deg, $green-02, $green-01);
+    color: $black-00;
+    border-color: $green-02;
+    box-shadow: 0 0.25rem 0.75rem rgba($green-02, 0.2);
+
+    &:hover:not(:disabled) {
+      transform: translateY(-0.25rem);
+      box-shadow: 0 0.5rem 1.5rem rgba($green-02, 0.3);
+    }
+
+    &:active:not(:disabled) {
+      transform: scale(0.98);
+    }
+
+    &:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+  }
+
+  &--outline {
+    background-color: transparent;
+    color: $gray-00;
+    border-color: $gray-01;
+
+    &:hover:not(:disabled) {
+      background-color: $white-01;
+      border-color: $gray-00;
+    }
+
+    &:active:not(:disabled) {
+      transform: scale(0.98);
+    }
+
+    &:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+  }
+
+  &--light {
+    background-color: $white-00;
+    color: $blue-00;
+    border-color: $gray-01;
+    box-shadow: 0 0.125rem 0.5rem rgba($black-00, 0.08);
+
+    &:hover:not(:disabled) {
+      background-color: $white-01;
+      border-color: $gray-00;
+    }
+
+    &:active:not(:disabled) {
+      transform: scale(0.98);
+    }
+
+    &:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+  }
+
+  &--dark {
+    background-color: $black-00;
+    color: $white-00;
+    border-color: $black-00;
+    box-shadow: 0 0.25rem 0.75rem rgba($black-00, 0.3);
+
+    &:hover:not(:disabled) {
+      background-color: $gray-00;
+      border-color: $gray-00;
+    }
+
+    &:active:not(:disabled) {
+      transform: scale(0.98);
+    }
+
+    &:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+  }
+
+  &--danger {
+    background: linear-gradient(135deg, $red-00, $red-01);
+    color: $white-00;
+    border-color: $red-00;
+    box-shadow: 0 0.25rem 0.75rem rgba($red-00, 0.2);
+
+    &:hover:not(:disabled) {
+      transform: translateY(-0.25rem);
+      box-shadow: 0 0.5rem 1.5rem rgba($red-00, 0.3);
+    }
+
+    &:active:not(:disabled) {
+      transform: scale(0.98);
+    }
+
+    &:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 // Backward compatibility
-.button-black-00 { @include inter-button(1rem); background-color: $black-00; color: $white-00; border-radius: 1.25rem; padding: 0.625rem 1rem; display: inline-flex; align-items: center; justify-content: center; }
+.button-black-00 {
+  @include inter-button(1rem);
+  background-color: $black-00;
+  color: $white-00;
+  border-radius: 1.25rem;
+  padding: $spacing-sm $spacing-md;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}

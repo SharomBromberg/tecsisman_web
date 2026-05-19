@@ -1,0 +1,57 @@
+<a
+  class="product-card"
+  [routerLink]="['/Productos', product().id]"
+  (click)="onCardClick()"
+  [attr.aria-label]="'Ver detalle de ' + product().name">
+  
+  <!-- Image Section -->
+  <div class="product-card__image-wrapper">
+    @if (product().image) {
+      <img
+        [src]="product().image"
+        [alt]="product().name"
+        class="product-card__image"
+        loading="lazy">
+    } @else {
+      <div class="product-card__image-placeholder"></div>
+    }
+    
+    @if (product().featured) {
+      <span class="product-card__badge">Destacado</span>
+    }
+  </div>
+
+  <!-- Info Section -->
+  <div class="product-card__info">
+    <!-- Category -->
+    @if (product().category) {
+      <span class="product-card__category">{{ product().category }}</span>
+    }
+
+    <!-- Title -->
+    <h3 class="product-card__title">{{ product().name }}</h3>
+
+    <!-- Description -->
+    <p class="product-card__description">{{ product().description }}</p>
+
+    <!-- Rating -->
+    @if (product().rating && product().rating > 0) {
+      <div class="product-card__rating" [attr.aria-label]="'Calificación: ' + product().rating">
+        @for (star of [1, 2, 3, 4, 5]; track star) {
+          <span class="star" [class.filled]="star <= Math.round(product().rating!)">★</span>
+        }
+      </div>
+    }
+
+    <!-- Price and Action -->
+    <div class="product-card__footer">
+      <span class="product-card__price">{{ product().price | currency:'USD':'symbol':'1.0-0' }}</span>
+      <button class="product-card__btn" type="button" aria-label="Ver detalles">
+        <span>Ver detalles</span>
+        <svg width="1rem" height="1rem" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <polyline points="9 18 15 12 9 6"></polyline>
+        </svg>
+      </button>
+    </div>
+  </div>
+</a>

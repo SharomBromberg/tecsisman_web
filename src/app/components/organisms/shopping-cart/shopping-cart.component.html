@@ -1,1 +1,33 @@
-<p>shopping-cart works!</p>
+<section class="shopping-cart" aria-label="Carrito de compras">
+  <div class="shopping-cart__header">
+    <h2 class="shopping-cart__title">Carrito de Compras</h2>
+    <span class="shopping-cart__badge" aria-label="Cantidad de productos">0</span>
+  </div>
+
+  <div class="shopping-cart__content">
+    <div class="shopping-cart__empty-state" aria-live="polite">
+      <svg class="empty-state__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <circle cx="9" cy="21" r="1"></circle>
+        <circle cx="20" cy="21" r="1"></circle>
+        <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+      </svg>
+      <p class="empty-state__text">Tu carrito está vacío</p>
+      <p class="empty-state__subtitle">Comienza a agregar productos</p>
+      <a href="/Catalogo" class="shopping-cart__cta-button">
+        <span>Ir al catálogo</span>
+        <svg width="1rem" height="1rem" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <polyline points="9 18 15 12 9 6"></polyline>
+        </svg>
+      </a>
+    </div>
+  </div>
+
+  <div class="shopping-cart__footer">
+    <button class="shopping-cart__btn shopping-cart__btn--secondary" disabled aria-label="Limpiar carrito">
+      Limpiar carrito
+    </button>
+    <button class="shopping-cart__btn shopping-cart__btn--primary" disabled aria-label="Proceder al pago">
+      Proceder al pago
+    </button>
+  </div>
+</section>

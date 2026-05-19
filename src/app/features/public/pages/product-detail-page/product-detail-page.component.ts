@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, DestroyRef, OnInit, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, DestroyRef, OnInit, inject, ElementRef, viewChild, viewChildren, ChangeDetectorRef } from '@angular/core';
 import { FormBuilder, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { filter, map, shareReplay, startWith, switchMap, tap } from 'rxjs';
@@ -33,6 +33,7 @@ export class ProductDetailPageComponent implements OnInit {
   private readonly productService = inject(ProductService);
   private readonly fb = inject(FormBuilder);
   private readonly destroyRef = inject(DestroyRef);
+  private readonly cdr = inject(ChangeDetectorRef);
 
   selectedImageIndex = 0;
   readonly whatsappNumber = '573000000000'; // Número de prueba para WhatsApp
@@ -70,6 +71,9 @@ export class ProductDetailPageComponent implements OnInit {
     message: ['', [Validators.required, Validators.minLength(10)]],
   });
 
+  carouselContainer = viewChild<ElementRef<HTMLElement>>('carouselContainer');
+  thumbnailButtons = viewChildren<ElementRef<HTMLElement>>('thumbnailBtn');
+
   ngOnInit(): void {}
 
   openWhatsApp(productName: string): void {
@@ -79,7 +83,39 @@ export class ProductDetailPageComponent implements OnInit {
   }
 
   selectImage(index: number): void {
+    this.scrollToImage(index);
+  }
+
+  scrollToImage(index: number): void {
     this.selectedImageIndex = index;
+    this.cdr.markForCheck(); // Fuerza el repintado OnPush
+    const container = this.carouselContainer()?.nativeElement;
+    if (container) {
+      const targetScrollLeft = container.clientWidth * index;
+      container.scrollTo({
+        left: targetScrollLeft,
+        behavior: 'smooth'
+      });
+    }
+  }
+
+  onCarouselScroll(event: Event): void {
+    const container = event.target as HTMLElement;
+    const scrollLeft = container.scrollLeft;
+    const width = container.clientWidth;
+    if (width > 0) {
+      const newIndex = Math.round(scrollLeft / width);
+      if (this.selectedImageIndex !== newIndex) {
+        this.selectedImageIndex = newIndex;
+        this.cdr.markForCheck();
+        
+        // Auto-scroll del bloque de thumbnails para seguir la imagen
+        const thumbBtn = this.thumbnailButtons()[newIndex]?.nativeElement;
+        if (thumbBtn) {
+          thumbBtn.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+        }
+      }
+    }
   }
 
   submitComment(product: Product): void {
