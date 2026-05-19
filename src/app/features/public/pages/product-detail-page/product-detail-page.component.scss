@@ -5,8 +5,8 @@
   flex-direction: column;
   gap: $spacing-xl;
   padding: $spacing-lg;
-  background: linear-gradient(135deg, $black-00 0%, $blue-01 100%);
-  color: $white-00;
+  background: $white-01;
+  color: $gray-00;
   min-height: 100vh;
 
   @media (min-width: 768px) {
@@ -16,7 +16,7 @@
 
 // Breadcrumb navigation
 .breadcrumb {
-  color: rgba($white-00, 0.6);
+  color: rgba($gray-00, 0.6);
   font-size: 0.9rem;
   font-family: $inter-font;
   margin-bottom: $spacing-md;
@@ -28,7 +28,7 @@
     transition: color 0.2s ease;
 
     &:hover {
-      color: $white-00;
+      color: $blue-01;
     }
   }
 }
@@ -77,12 +77,12 @@
     }
     
     &::-webkit-scrollbar-thumb {
-      background-color: rgba($white-00, 0.3);
+      background-color: rgba($gray-00, 0.2);
       border-radius: $radius-pill;
       transition: background-color 0.2s ease;
 
       &:hover {
-        background-color: rgba($white-00, 0.5);
+        background-color: rgba($gray-00, 0.4);
       }
     }
 
@@ -99,8 +99,8 @@
     border-radius: $radius-md;
     overflow: hidden;
     cursor: pointer;
-    border: 0.125rem solid rgba($white-00, 0.15);
-    background: rgba($white-00, 0.02);
+    border: 0.125rem solid rgba($gray-00, 0.1);
+    background: $white-00;
     transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
     padding: 0;
     display: flex;
@@ -141,8 +141,8 @@
     display: flex;
     flex-direction: row;
     gap: 0;
-    background: rgba($white-00, 0.02);
-    border: 0.0625rem solid rgba($white-00, 0.1);
+    background: $white-00;
+    border: 0.0625rem solid rgba($gray-00, 0.1);
     scrollbar-width: none;
 
     &::-webkit-scrollbar {
@@ -187,7 +187,7 @@
     font-family: $poppins-font;
     font-size: 1.75rem;
     font-weight: $font-weight-bold;
-    color: $white-00;
+    color: $blue-01;
     margin: 0;
     line-height: $line-height-tight;
 
@@ -212,7 +212,7 @@
     }
 
     .reviews-link {
-      color: $green-02;
+      color: $blue-00;
       font-size: 0.9rem;
       text-decoration: none;
       transition: opacity 0.2s ease, text-decoration 0.2s ease;
@@ -230,26 +230,22 @@
     flex-direction: column;
     gap: $spacing-md;
     padding: $spacing-lg 0;
-    border-top: 0.0625rem solid rgba($white-00, 0.15);
-    border-bottom: 0.0625rem solid rgba($white-00, 0.15);
+      border-top: 0.0625rem solid rgba($gray-00, 0.1);
+      border-bottom: 0.0625rem solid rgba($gray-00, 0.1);
   }
 
   &__price {
     font-family: $inter-font;
     font-size: 2.5rem;
     font-weight: $font-weight-bold;
-    color: $white-00;
+    color: $blue-01;
     margin: 0;
-    background: linear-gradient(135deg, $green-02, $green-01);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
   }
 
   &__stock-badge {
     align-self: flex-start;
-    background-color: rgba($green-02, 0.15);
-    color: $green-02;
+    background-color: rgba($green-02, 0.2);
+    color: $blue-01;
     padding: $spacing-sm $spacing-md;
     border-radius: $radius-pill;
     font-family: $inter-font;
@@ -314,7 +310,7 @@
 
 .commercial__benefits {
   margin-top: $spacing-lg;
-  color: rgba($white-00, 0.7);
+  color: $gray-00;
   font-family: $inter-font;
   font-size: 0.9rem;
   display: flex;
@@ -363,26 +359,26 @@
     font-family: $poppins-font;
     font-size: 1.5rem;
     font-weight: $font-weight-bold;
-    color: $white-00;
+    color: $blue-01;
     margin: 0;
     padding-bottom: $spacing-md;
-    border-bottom: 0.0625rem solid rgba($white-00, 0.15);
+    border-bottom: 0.0625rem solid rgba($gray-00, 0.1);
   }
 
   &__content {
     font-family: $inter-font;
     font-size: 1rem;
     line-height: $line-height-normal;
-    color: rgba($white-00, 0.85);
-    background: rgba($white-00, 0.03);
+    color: $gray-00;
+    background: $white-00;
     padding: $spacing-lg;
     border-radius: $radius-md;
-    border: 0.0625rem solid rgba($white-00, 0.08);
+    border: 0.0625rem solid rgba($gray-00, 0.08);
     transition: background 0.2s ease, border-color 0.2s ease;
 
     &:hover {
-      background: rgba($white-00, 0.05);
-      border-color: rgba($white-00, 0.15);
+      background: rgba($black-00, 0.02);
+      border-color: rgba($gray-00, 0.15);
     }
 
     p {
@@ -408,7 +404,7 @@
     justify-content: space-between;
     align-items: center;
     padding: $spacing-md 0;
-    border-bottom: 0.0625rem solid rgba($white-00, 0.08);
+    border-bottom: 0.0625rem solid rgba($gray-00, 0.08);
     
     &:last-child {
       border-bottom: none;
@@ -416,7 +412,7 @@
     }
 
     strong {
-      color: $white-00;
+      color: $blue-01;
       font-weight: $font-weight-semibold;
       font-family: $inter-font;
     }
@@ -441,12 +437,12 @@
     }
 
     &::-webkit-scrollbar-thumb {
-      background-color: rgba($white-00, 0.2);
+      background-color: rgba($gray-00, 0.2);
       border-radius: $radius-pill;
       transition: background-color 0.2s ease;
 
       &:hover {
-        background-color: rgba($white-00, 0.3);
+        background-color: rgba($gray-00, 0.3);
       }
     }
   }
@@ -457,15 +453,15 @@
   flex-direction: column;
   gap: $spacing-sm;
   padding: $spacing-lg;
-  background: rgba($white-00, 0.03);
+  background: $white-00;
   border-radius: $radius-md;
-  border: 0.0625rem solid rgba($white-00, 0.08);
+  border: 0.0625rem solid rgba($gray-00, 0.08);
   transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
 
   &:hover {
     transform: translateY(-0.25rem);
-    background: rgba($white-00, 0.06);
-    border-color: rgba($white-00, 0.12);
+    background: rgba($black-00, 0.02);
+    border-color: rgba($gray-00, 0.12);
     box-shadow: 0 0.25rem 0.75rem rgba($black-00, 0.3);
   }
 
@@ -481,7 +477,7 @@
     font-family: $inter-font;
     font-size: 1rem;
     font-weight: $font-weight-semibold;
-    color: $white-00;
+    color: $blue-01;
   }
 
   &__rating {
@@ -496,24 +492,31 @@
     font-family: $inter-font;
     font-size: 0.95rem;
     line-height: $line-height-normal;
-    color: rgba($white-00, 0.75);
+    color: $gray-00;
     margin: 0;
+  }
+
+  &__date {
+    font-family: $inter-font;
+    font-size: 0.8rem;
+    color: rgba($gray-00, 0.6);
+    margin-top: $spacing-sm;
   }
 }
 
 // Form styles for comment submission
 .social-form {
   margin-top: $spacing-xl !important;
-  background: rgba($white-00, 0.03) !important;
+  background: $white-00 !important;
   padding: $spacing-lg !important;
   border-radius: $radius-md !important;
-  border: 0.0625rem solid rgba($white-00, 0.08) !important;
+  border: 0.0625rem solid rgba($gray-00, 0.08) !important;
 
   h3 {
     font-family: $poppins-font !important;
     font-size: 1.2rem !important;
     margin: 0 0 $spacing-lg 0 !important;
-    color: $white-00 !important;
+    color: $blue-01 !important;
     font-weight: $font-weight-bold !important;
   }
 
@@ -526,7 +529,7 @@
     span {
       font-family: $inter-font !important;
       font-size: 0.9rem !important;
-      color: rgba($white-00, 0.8) !important;
+      color: rgba($black-00, 0.8) !important;
       font-weight: $font-weight-medium !important;
     }
 
@@ -535,9 +538,9 @@
       font-family: $inter-font !important;
       padding: $spacing-md !important;
       border-radius: $radius-sm !important;
-      border: 0.0625rem solid rgba($white-00, 0.15) !important;
-      background: rgba($black-00, 0.5) !important;
-      color: $white-00 !important;
+      border: 0.0625rem solid rgba($gray-00, 0.15) !important;
+      background: $white-01 !important;
+      color: $black-00 !important;
       width: 100% !important;
       box-sizing: border-box !important;
       transition: border-color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease !important;
@@ -545,12 +548,12 @@
       &:focus {
         outline: none !important;
         border-color: $green-02 !important;
-        background: rgba($black-00, 0.7) !important;
+        background: $white-00 !important;
         box-shadow: 0 0 0 3px rgba($green-02, 0.1) !important;
       }
 
       &::placeholder {
-        color: rgba($white-00, 0.4) !important;
+        color: rgba($black-00, 0.4) !important;
       }
     }
 
